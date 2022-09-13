@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  </head>
+  <body>
+      <form method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+          <div class="row justify-content-center mt-5">
+            <div class="col-md-5">
+                <h2>Registration</h2>
+                <label>Name</label>
+                <input type="text" name="name" class="form-control" id="name">
+
+                <label>Age</label>
+                <input type="text" name="age" class="form-control" id="age">
+
+                <label >Height</label>
+                <input type="text" name="height" class="form-control" id="height">
+
+                <label>Email</label>
+                <input type="email" name="email" class="form-control"/>
+
+                <label>Password</label>
+                <input type="password" name="password" class="form-control"/>
+
+                <label>Confirm Password</label>
+                <input type="password" name="pwd2" class="form-control"/>
+
+                <br>
+                <div class="form-group">
+                  <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+                </div>
+
+            </div>
+          </div>
+        </div>
+
+      </form>
+  </body>
+</html>
