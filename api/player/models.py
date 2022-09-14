@@ -9,6 +9,7 @@ class Player(models.Model):
     height = models.CharField(max_length=6)
     email = models.CharField(max_length=30)
     password = models.CharField(max_length=500, default=None)
+    confirm_password = models.CharField(max_length=500, default=None)
     is_admin = models.BooleanField(default=False)
     is_captain = models.BooleanField(default=False)
     is_player = models.BooleanField(default=True)
