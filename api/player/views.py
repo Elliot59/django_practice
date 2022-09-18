@@ -45,3 +45,35 @@ class PlayerSignUpView(viewsets.ModelViewSet):
         new_player.save()
         serializer = PlayerSerializer(new_player)
         return Response(serializer.data)
+
+@csrf_exempt
+def Login(request):
+    if request.method == "GET":
+        if request.user.is_authenticated:
+            return HttpResponse('You are already logged in')
+        else:
+            return HttpResponse('GET request not allowed')
+    else:
+        try:
+            username = request.POST.get('username')
+            password = request.POST.get('password')
+            user = User.objects.get(username=username)
+            if user is not None:
+                if authenticate(request, username=username, password=password):
+                    login(request, user)
+                    a = Player.objects.filter(name=username).values_list('is_captain', flat=True)[0]
+                    if a == True:
+                        return HttpResponse('Welcome captain')
+                    else:
+                        return HttpResponse(f'Logged in as {user}')
+            else:
+                return HttpResponse('User not found')
+        except ObjectDoesNotExist:
+            return HttpResponse('Object not found')
+
+
+@csrf_exempt
+def Logout(request):
+    logout(request)
+    return HttpResponse('Logged out successful')
+

@@ -8,6 +8,8 @@ router.register(r'signup', views.PlayerSignUpView)
 
 urlpatterns = [
     path('', include(router.urls)),
+    path('login/', views.Login),
+    path('logout/', views.Logout),
 
 
 ]
